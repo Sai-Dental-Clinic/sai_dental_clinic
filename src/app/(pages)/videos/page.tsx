@@ -1,7 +1,6 @@
 "use client"
 
-import YouTubeSection from "@/components/sections/videos/YouTubeSection"
-import { youtubeData } from "@/data/home/youtube"
+import DynamicYouTubeSection from "@/components/sections/videos/DynamicYouTubeSection"
 import SubscribeSection from "@/components/sections/subscribe/SubscribeSection"
 import { subscribeData } from "@/data/home/subscribe"
 
@@ -22,7 +21,7 @@ export default function VideosPage() {
         </div>
       </section>
 
-      <YouTubeSection data={youtubeData} showHeading={false} />
+      <DynamicYouTubeSection showHeading={false} />
 
       <SubscribeSection data={subscribeData} />
     </main>

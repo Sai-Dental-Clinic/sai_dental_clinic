@@ -18,6 +18,7 @@ export interface YouTubeSectionData {
   channelHandle: string
   channelUrl: string
   channelName: string
+  channelSubscriberCount?: string
   sectionHeading: string
   sectionSubheading: string
   videos: YouTubeVideo[]
