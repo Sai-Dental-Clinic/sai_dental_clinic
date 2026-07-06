@@ -1,5 +1,3 @@
-// export const runtime = "nodejs"
-
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -10,6 +8,9 @@ import ContentContainer from "@/components/common-ui/containers/ContentContainer
 import { getBlogBySlugRaw, getAllBlogs } from "@/lib/mdx"
 import { renderMdxToHtml } from "@/lib/mdx-to-html"
 import PageHeading from "@/components/common-ui/headers/PageHeading"
+import LocalBlogDetail from "@/components/sections/blogs/LocalBlogDetail"
+
+export const dynamicParams = true
 
 export async function generateStaticParams() {
   const blogs = await getAllBlogs()
@@ -27,7 +28,9 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   const blog = getBlogBySlugRaw(slug)
 
-  if (!blog) notFound()
+  if (!blog) {
+    return <LocalBlogDetail slug={slug} />
+  }
 
   const htmlContent = await renderMdxToHtml(blog.content)
 
