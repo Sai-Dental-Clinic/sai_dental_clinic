@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import ContentContainer from '@/components/common-ui/containers/ContentContainer'
 import ContentText from '@/components/common-ui/contentText/ContentText'
 import PageHeading from '@/components/common-ui/headers/PageHeading'
@@ -12,6 +13,16 @@ export async function generateStaticParams() {
     }))
 }
 // export const dynamicParams = true;
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const service = serviceData.cards.find((s) => s.id.toString() === id)
+  if (!service) return { title: "Service" }
+  return {
+    title: service.title,
+    description: service.description,
+  }
+}
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     const { id } = await params

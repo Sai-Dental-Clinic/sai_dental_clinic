@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,6 +12,23 @@ import PageHeading from "@/components/common-ui/headers/PageHeading"
 import LocalBlogDetail from "@/components/sections/blogs/LocalBlogDetail"
 
 export const dynamicParams = true
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const blog = getBlogBySlugRaw(slug)
+  if (!blog) {
+    return { title: "Blog Post" }
+  }
+  return {
+    title: blog.title,
+    description: blog.excerpt,
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      images: blog.image ? [{ url: blog.image }] : undefined,
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const blogs = await getAllBlogs()
