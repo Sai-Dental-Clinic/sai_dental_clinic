@@ -1,111 +1,68 @@
-"use client";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import { poppins } from "@/utils/font";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import GoogleReviews from "@/components/common-ui/google-reviews/GoogleReviews";
-import ContactSection from "@/components/common-ui/contactForm/ContactSection";
-import SubscribeSection from "@/components/sections/subscribe/SubscribeSection";
-import GoogleBusinessQR from "@/components/common-ui/businessqr/GoogleBusinessQR";
-import { contactLocations } from "@/data/contact/contact";
-import { subscribeData } from "@/data/home/subscribe";
-import dynamic from "next/dynamic";
-import NoticePopup from "@/components/common-ui/notice/NoticePopup";
-import CelebrationOverlay from "@/components/common-ui/celebration/CelebrationOverlay";
-import HiringPopup from "@/components/common-ui/hiring/HiringPopup";
-const ChatBotFloat = dynamic(
-  () => import("@/components/common-ui/chatbot/ChatBotFloat").then((m) => m.ChatBotFloat),
-  { ssr: false }
-);
+import type { Metadata } from "next"
+import "./globals.css"
+import { cn } from "@/lib/utils"
+import { poppins } from "@/utils/font"
+import ClientLayout from "./ClientLayout"
+import JsonLd from "@/components/seo/JsonLd"
 
-const WhatsAppFloat = dynamic(
-  () => import("@/components/common-ui/whatsappfloat/WhatsappFloat").then((m) => m.WhatsAppFloat),
-  { ssr: false }
-);
+const siteUrl = "https://sai-dental-clinic.pages.dev"
 
-const ConsultationFloat = dynamic(
-  () => import("@/components/sections/consultation/ConsultationFloat").then((m) => m.ConsultationFloat),
-  { ssr: false }
-);
-
-const noticeImage = "/images/Notice.webp";
-const ACTIVE_NOTICE_KEY = "notice-5th-anniversary-2025";
-const NOTICE_PREVIEW_MODE = true;
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Sai Dental Clinic - Best Dentist in Mayiladuthurai",
+    template: "%s | Sai Dental Clinic",
+  },
+  description:
+    "Sai Dental Clinic in Mayiladuthurai offers expert dental care — root canal, teeth whitening, dental implants, braces, and more. 7+ years experience. Book your appointment today!",
+  openGraph: {
+    type: "website",
+    siteName: "Sai Dental Clinic",
+    title: "Sai Dental Clinic - Best Dentist in Mayiladuthurai",
+    description:
+      "Expert dental care in Mayiladuthurai. Root canal, teeth whitening, implants, braces & more. Book now!",
+    url: siteUrl,
+    locale: "en_IN",
+    images: [
+      {
+        url: "/icon.png",
+        width: 512,
+        height: 512,
+        alt: "Sai Dental Clinic",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sai Dental Clinic",
+    description:
+      "Expert dental care in Mayiladuthurai. Root canal, teeth whitening, implants, braces & more.",
+    images: ["/icon.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/icon.png",
+  },
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const pathname = usePathname();
-  const [celebrateTrigger, setCelebrateTrigger] = useState(false);
-  const [showHiring, setShowHiring] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => window.scrollTo(0, 0), 50);
-    return () => clearTimeout(t);
-  }, [pathname]);
-
-  // Called by NoticePopup when the user closes/dismisses the notice
-  const handleNoticeClose = () => {
-    // Small delay so the modal exit animation finishes first
-    setTimeout(() => setCelebrateTrigger(true), 400);
-  };
-
-  
-const handleCelebrationClose = () => {
-  setCelebrateTrigger(false);
-  setShowHiring(true); // ← ADD — fires hiring popup after celebration
-};
-
-
-  
-
   return (
     <html lang="en">
       <body
         className={cn(
           "font-poppins min-h-screen antialiased",
-          poppins
+          poppins,
         )}
         suppressHydrationWarning
       >
-        <Header />
-
-        <main className="px-4 sm:px-0 w-full">{children}</main>
-
-        <GoogleReviews />
-        <ContactSection locations={contactLocations} />
-        <GoogleBusinessQR />
-        <Footer />
-
-        <NoticePopup
-          imageSrc={noticeImage}
-          imageAlt="Sai Dental Clinic – 5th Anniversary Notice"
-          storageKey={ACTIVE_NOTICE_KEY}
-          alwaysShow={NOTICE_PREVIEW_MODE}
-          delay={1000}
-          onClose={handleNoticeClose}   // ← add this prop
-        />
-
-        {/* 🎉 Celebration fires after notice is dismissed */}
-        <CelebrationOverlay
-          trigger={celebrateTrigger}
-          duration={10000}
-          onClose={handleCelebrationClose}
-        />
-
-        <HiringPopup
-  trigger={showHiring}
-  delay={2000}
-  onClose={() => setShowHiring(false)}
-/>
-
-        <ConsultationFloat />
-        <div className="fixed bottom-4 right-4 z-[9999] isolate">
-          <ChatBotFloat />
-        </div>
+        <JsonLd />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
-  );
+  )
 }

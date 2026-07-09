@@ -1,9 +1,16 @@
 // src/app/(pages)/dentist/[id]/page.tsx
 
+import type { Metadata } from "next"
 import { notFound } from 'next/navigation'
 import { getDentistById, dentistsData } from '@/data/dentists/dentists'
 import ContentContainer from '@/components/common-ui/containers/ContentContainer'
 import DentistDetailClient from '@/components/sections/dentists/DentistDetailClient'
+
+export const metadata: Metadata = {
+  title: "Our Dentists",
+  description:
+    "Meet the expert dental team at Sai Dental Clinic in Mayiladuthurai. Skilled professionals dedicated to your smile.",
+}
 
 export async function generateStaticParams() {
   return dentistsData.dentists.map((dentist) => ({

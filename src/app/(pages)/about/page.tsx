@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import AboutHero from '@/components/sections/about/abouthero/AboutHero'
 import Gallery from '@/components/sections/about/gallery/Gallery'
 import StatsSection from '@/components/sections/about/statsabout/StatsSection'
@@ -15,6 +16,12 @@ import { subscribeData } from '@/data/home/subscribe'
 import { videoData } from '@/data/home/video' 
 import { aboutVideoData } from '@/data/about/video'
 
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Sai Dental Clinic in Mayiladuthurai. 7+ years of expert dental care with a team of skilled dentists. Your smile, our 1st priority.",
+}
 
 const AboutPage = () => {
   return (

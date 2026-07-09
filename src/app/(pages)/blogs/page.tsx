@@ -1,5 +1,12 @@
+import type { Metadata } from "next"
 import BlogListingClient from "@/components/sections/blogs/BlogListingClient"
 import { getAllBlogs } from "@/lib/mdx"
+
+export const metadata: Metadata = {
+  title: "Dental Blog",
+  description:
+    "Read expert dental tips, oral health advice, and treatment guides from Sai Dental Clinic in Mayiladuthurai.",
+}
 
 export default function BlogsPage() {
   const serverBlogs = getAllBlogs()
