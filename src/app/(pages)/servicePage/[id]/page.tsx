@@ -6,9 +6,6 @@ import FeatureChecklist from '@/components/sections/service/FeatureChecklist'
 import { serviceData } from '@/data/service/service'
 import React from 'react'
 
-export const runtime = "edge"
-export const dynamicParams = true
-
 export async function generateStaticParams() {
     return serviceData.cards.map((service) => ({
         id: service.id.toString(),
