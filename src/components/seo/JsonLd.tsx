@@ -1,11 +1,13 @@
+const siteUrl = "https://saidentalmayiladuthurai.com"
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Dentist",
-  "@id": "https://sai-dental-clinic.pages.dev",
+  "@id": siteUrl,
   name: "Sai Dental Clinic",
   description:
     "Expert dental care in Mayiladuthurai. Root canal, teeth whitening, dental implants, braces, and more.",
-  url: "https://sai-dental-clinic.pages.dev",
+  url: siteUrl,
   telephone: ["+918122835737", "+918903157201"],
   email: "support@saidentalmayiladuthurai.com",
   founder: {
@@ -61,7 +63,7 @@ const structuredData = {
       closes: "15:00",
     },
   ],
-  image: "https://sai-dental-clinic.pages.dev/icon.png",
+  image: `${siteUrl}/icon.png`,
   sameAs: [
     "https://www.youtube.com/@saidentalclinicdrsrinivas",
     "https://www.facebook.com/saidentalclinic1/",

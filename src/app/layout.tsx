@@ -5,7 +5,7 @@ import { poppins } from "@/utils/font"
 import ClientLayout from "./ClientLayout"
 import JsonLd from "@/components/seo/JsonLd"
 
-const siteUrl = "https://sai-dental-clinic.pages.dev"
+const siteUrl = "https://saidentalmayiladuthurai.com"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

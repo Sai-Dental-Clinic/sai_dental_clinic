@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/write"],
     },
-    sitemap: "https://sai-dental-clinic.pages.dev/sitemap.xml",
+    sitemap: "https://saidentalmayiladuthurai.com/sitemap.xml",
   }
 }
