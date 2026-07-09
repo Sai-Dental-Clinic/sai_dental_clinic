@@ -5,6 +5,9 @@ import { getDentistById, dentistsData } from '@/data/dentists/dentists'
 import ContentContainer from '@/components/common-ui/containers/ContentContainer'
 import DentistDetailClient from '@/components/sections/dentists/DentistDetailClient'
 
+export const runtime = "edge"
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   return dentistsData.dentists.map((dentist) => ({
     id: dentist.id.toString(),

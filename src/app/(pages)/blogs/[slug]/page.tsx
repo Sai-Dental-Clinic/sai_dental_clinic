@@ -10,6 +10,7 @@ import { renderMdxToHtml } from "@/lib/mdx-to-html"
 import PageHeading from "@/components/common-ui/headers/PageHeading"
 import LocalBlogDetail from "@/components/sections/blogs/LocalBlogDetail"
 
+export const runtime = "edge"
 export const dynamicParams = true
 
 export async function generateStaticParams() {

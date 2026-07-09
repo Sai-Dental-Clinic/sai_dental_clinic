@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 
+export const runtime = "edge"
+
 const YT_API = "https://www.googleapis.com/youtube/v3"
 
 interface YouTubeVideoItem {
