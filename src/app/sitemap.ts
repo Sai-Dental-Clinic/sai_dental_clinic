@@ -3,7 +3,7 @@ import { getAllBlogs } from "@/lib/mdx"
 import { dentistsData } from "@/data/dentists/dentists"
 import { serviceData } from "@/data/service/service"
 
-const siteUrl = "https://sai-dental-clinic.pages.dev"
+const siteUrl = "https://saidentalmayiladuthurai.com"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
