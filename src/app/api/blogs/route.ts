@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createOrUpdateFile, deleteFile, listDirectory, getFileContent, hasGitHubToken } from "@/lib/github"
 
+export const runtime = "edge"
+
 let fs: any = null
 let pathModule: any = null
 try {
