@@ -11,7 +11,7 @@ export default function ReviewCard({ review }: { review: Review }) {
         <div>
           <p className="font-medium text-foreground">{review.name}</p>
           <p className="text-xs text-muted-foreground">
-            {review.monthsAgo} months ago
+            {review.date}
           </p>
           <p className="text-yellow-500 text-sm">
             {"★".repeat(review.rating)}
