@@ -48,14 +48,14 @@ export default function HomeBlogsSection() {
 
         const all = [...blogsData.blogs, ...serverMapped, ...localMapped]
         all.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        const latest = all.slice(0, 6)
+        const latest = all.slice(0, 3)
 
         setData({ ...blogsData, blogs: latest })
       })
       .catch(() => {
         const all = [...blogsData.blogs]
         all.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        setData({ ...blogsData, blogs: all.slice(0, 6) })
+        setData({ ...blogsData, blogs: all.slice(0, 3) })
       })
   }, [])
 

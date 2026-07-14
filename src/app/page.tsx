@@ -48,7 +48,7 @@ const Page = () => {
       <WhyChooseUsSection data={whyChooseUsData} />
       <FeaturesSection data={introductionData} />
       <TestimonialsSection data={sampleTestimonials} />
-      <DynamicYouTubeSection maxVideos={6} />
+      <DynamicYouTubeSection maxVideos={3} />
       <AppointmentSection data={appointmentData} />
       <HomeBlogsSection />
       <FAQSection data={faqData} />
